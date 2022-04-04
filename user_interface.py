@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkcalendar import DateEntry
 import datetime
-from api_connection import get_all_currencies_labels, get_currency_exchange_values
+from api_connection import get_all_currencies_labels
 from exchange_rates_calculation import calculate_currency_amount
 
 
@@ -34,11 +34,8 @@ class main_interface:
         self.master.mainloop()
 
     def calculate_card_1(self):
-        currency_rate_dict = get_currency_exchange_values
-        (str(self.date_entry.get_date()), self.selected_old_currency.get(),
-         self.selected_new_currency.get())
-        a = calculate_currency_amount(
-            currency_rate_dict, self.amount_entry.get())
+        a = calculate_currency_amount(str(self.date_entry.get_date()), self.selected_old_currency.get(),
+                                      self.selected_new_currency.get(), self.amount_entry.get())
         self.result.configure(text=a)
 
     def create_card_1(self):
